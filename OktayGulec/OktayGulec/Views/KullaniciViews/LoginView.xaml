@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OktayGulec.Views.LoginView">
+    <ContentPage.Content>
+        <Grid RowDefinitions="*, *"
+              Padding="16">
+            <StackLayout VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="CenterAndExpand">
+                <Label Text="Mobil Programlama Final"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="#1a3e60"/>
+                <Label Text="(Oktay Güleç)" 
+                       FontSize="Medium"
+                       HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1">
+                <Entry Text="{Binding Kullanici.KullaniciAdi}"
+                       Placeholder="Kullanıcı adınızı giriniz"
+                       Margin="0, 0, 0, 8"/>
+                <Entry Text="{Binding Kullanici.Parola}"
+                       Placeholder="Parolanızı giriniz"
+                       Margin="0, 0, 0, 8"
+                       IsPassword="True"/>
+                <Label Text="{Binding ErrorText}"
+                       TextColor="Red"/>
+                <Button Text="GİRİŞ YAP"
+                        VerticalOptions="End"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#1a3e60"
+                        TextColor="White"
+                        Command="{Binding LoginCommand}" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

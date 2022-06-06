@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:converters="clr-namespace:OktayGulec.Converters"
+             x:Class="OktayGulec.Views.DersListView"
+             Title="Dersler"
+             x:Name="dersListView"
+             Appearing="dersListView_Appearing">
+    <ContentPage.Resources>
+        <converters:GectiKaldiColorConverter x:Key="gkConverter" />
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="EKLE" 
+                     Command="{Binding InsertCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto, auto, *">
+            <Grid ColumnDefinitions="*, *, 50, 50, 50"
+                  VerticalOptions="CenterAndExpand"
+                  Margin="8, 4">
+                <Label Text="Ders Ad" 
+                       TextColor="Black"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontAttributes="Bold"/>
+                <Label Text="Hoca Ad"
+                       TextColor="Black"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontAttributes="Bold"
+                       Grid.Column="1"/>
+                <Label Text="Vize"
+                       TextColor="Black"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontAttributes="Bold"
+                       Grid.Column="2"/>
+                <Label Text="Final"
+                       TextColor="Black"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontAttributes="Bold"
+                       Grid.Column="3"/>
+                <Label Text="Ort"
+                       TextColor="Black"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"
+                       FontAttributes="Bold"
+                       Grid.Column="4"/>
+            </Grid>
+            <BoxView HorizontalOptions="FillAndExpand"
+                     Grid.Row="1"
+                     HeightRequest="2"
+                     BackgroundColor="Black" />
+            <ListView Grid.Row="2"
+                      ItemsSource="{Binding Items}"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="*, *, 50, 50, 50"
+                                  Padding="8, 12">
+                                <Label Text="{Binding Ad}" 
+                                       HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Hoca.AdSoyad}" 
+                                       HorizontalOptions="StartAndExpand"
+                                       Grid.Column="1"/>
+                                <Label Text="{Binding Vize}" 
+                                       Grid.Column="2"
+                                       HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Final}" 
+                                       HorizontalOptions="StartAndExpand"
+                                       Grid.Column="3"/>
+                                <Label Text="{Binding Ortalama}" 
+                                       HorizontalOptions="StartAndExpand"
+                                       FontAttributes="Bold"
+                                       TextColor="{Binding Ortalama, Converter={StaticResource gkConverter}}"
+                                       Grid.Column="4"/>
+                            </Grid>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="SİL" 
+                                          Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference dersListView}}"
+                                          CommandParameter="{Binding .}"/>
+                                <MenuItem Text="GÜNCELLE"
+                                          Command="{Binding Path=BindingContext.UpdateCommand, Source={x:Reference dersListView}}"
+                                          CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

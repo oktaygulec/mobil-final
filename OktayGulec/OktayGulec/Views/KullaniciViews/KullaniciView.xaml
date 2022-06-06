@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OktayGulec.Views.KullaniciView">
+    <ContentPage.Content>
+        <StackLayout Padding="16">
+            <Entry Text="{Binding Kullanici.KullaniciAdi}"
+                   Margin="0, 0, 0, 8"
+                   Placeholder="Kullanıcı adını giriniz" />
+            <Entry Text="{Binding Kullanici.Parola}"
+                   Margin="0, 0, 0, 8"
+                   IsPassword="True"
+                   Placeholder="Şifreyi giriniz" />
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand"
+                         HorizontalOptions="End">
+                <Button Text="İPTAL"
+                        BackgroundColor="Transparent" 
+                        BorderWidth="1"
+                        BorderColor="#1a3e60"
+                        Margin="0,0,4,0"
+                        HorizontalOptions="End"
+                        Command="{Binding CancelCommand}"
+                        TextColor="#1a3e60"/>
+                <Button Text="KAYDET"
+                        Margin="4,0,0,0"
+                        Command="{Binding OkCommand}"
+                        CommandParameter="{Binding .}"
+                        HorizontalOptions="End"
+                        BackgroundColor="#1a3e60"
+                        TextColor="White" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

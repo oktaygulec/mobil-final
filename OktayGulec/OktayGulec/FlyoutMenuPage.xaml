@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OktayGulec.FlyoutMenuPage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="150, *">
+            <StackLayout BackgroundColor="#1a3e60">
+                <Label Text="Menü"
+                       FontAttributes="Bold"
+                       FontSize="Title"
+                       TextColor="White"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <ListView x:Name="flyoutMenuListView"
+                      Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="8"
+                                     VerticalOptions="CenterAndExpand"
+                                     HorizontalOptions="Center">
+                                <Label Text="{Binding Text}"
+                                   FontSize="Body"
+                                   FontAttributes="Bold"
+                                   TextColor="{DynamicResource OnPrimary}"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

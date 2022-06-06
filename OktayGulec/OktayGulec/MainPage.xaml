@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:OktayGulec" 
+            xmlns:views="clr-namespace:OktayGulec.Views"
+             x:Class="OktayGulec.MainPage">
+
+    <FlyoutPage.Flyout>
+        <local:FlyoutMenuPage x:Name="flyoutMenuPage" Title="Menü" />
+    </FlyoutPage.Flyout>
+
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <views:DersListView />
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+
+</FlyoutPage>
